@@ -140,12 +140,12 @@ export const ModulePage: React.FC = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="prose prose-invert max-w-none">
+                <div className="prose dark:prose-invert max-w-none">
                   {topic.content.split('\n').map((paragraph, i) => {
                     // Handle headers
                     if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
                       return (
-                        <h3 key={i} className="text-lg font-semibold mt-4 mb-2">
+                        <h3 key={i} className="text-lg font-semibold mt-4 mb-2 text-foreground">
                           {paragraph.replace(/\*\*/g, '')}
                         </h3>
                       );
@@ -153,7 +153,7 @@ export const ModulePage: React.FC = () => {
                     // Handle bullet points
                     if (paragraph.startsWith('- ')) {
                       return (
-                        <li key={i} className="ml-4">
+                        <li key={i} className="ml-4 text-foreground">
                           {paragraph.substring(2)}
                         </li>
                       );
@@ -161,7 +161,7 @@ export const ModulePage: React.FC = () => {
                     // Regular paragraphs
                     if (paragraph.trim()) {
                       return (
-                        <p key={i} className="mb-4 text-foreground/90">
+                        <p key={i} className="mb-4 text-foreground">
                           {paragraph}
                         </p>
                       );
