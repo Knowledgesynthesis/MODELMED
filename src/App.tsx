@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { HomePage } from '@/screens/home/HomePage';
 import { ModulePage } from '@/screens/modules/ModulePage';
+import { SandboxPage } from '@/screens/modules/SandboxPage';
 import { AssessmentPage } from '@/screens/assessment/AssessmentPage';
 import { GlossaryPage } from '@/screens/glossary/GlossaryPage';
 import { SettingsPage } from '@/screens/settings/SettingsPage';
@@ -17,6 +18,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/module/sandbox" element={<SandboxPage />} />
           <Route path="/module/:moduleId" element={<ModulePage />} />
           <Route path="/assessment" element={<AssessmentPage />} />
           <Route path="/glossary" element={<GlossaryPage />} />
