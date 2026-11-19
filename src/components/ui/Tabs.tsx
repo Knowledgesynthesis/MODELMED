@@ -1,44 +1,30 @@
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 
-interface Tab {
-  id: string;
-  label: string;
-  content: React.ReactNode;
-}
-
-interface TabsProps {
-  tabs: Tab[];
-  defaultTab?: string;
-  className?: string;
-}
-
-export const Tabs: React.FC<TabsProps> = ({ tabs, defaultTab, className }) => {
-  const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id);
-
+export function Tabs({ tabs, initial, className }: { tabs: { id: string; label: React.ReactNode; content: React.ReactNode }[]; initial?: string; className?: string }) {
+  const [active, setActive] = useState(initial ?? tabs[0]?.id);
   return (
-    <div className={cn('w-full', className)}>
-      <div className="border-b border-border">
-        <div className="flex space-x-4">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                'px-4 py-2 text-sm font-medium transition-colors border-b-2',
-                activeTab === tab.id
-                  ? 'border-primary text-foreground'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
-              )}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+    <div className={className}>
+      <div role="tablist" className="scrollbar-thin -mx-1 flex gap-1 overflow-x-auto border-b px-1">
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            role="tab"
+            type="button"
+            aria-selected={active === t.id}
+            onClick={() => setActive(t.id)}
+            className={cn(
+              '-mb-px whitespace-nowrap border-b-2 px-3 py-2 text-sm font-medium transition-colors',
+              active === t.id ? 'border-primary text-foreground' : 'border-transparent text-muted-foreground hover:text-foreground'
+            )}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
-      <div className="mt-4">
-        {tabs.find((tab) => tab.id === activeTab)?.content}
+      <div role="tabpanel" className="pt-4">
+        {tabs.find((t) => t.id === active)?.content}
       </div>
     </div>
   );
-};
+}

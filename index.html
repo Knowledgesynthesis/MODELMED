@@ -1,17 +1,27 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ModelMed - Interactive predictive modeling education for clinicians" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ModelMed — Clinical Prediction Models for Clinicians</title>
+    <meta name="description" content="An evidence-based, interactive course for clinicians on building, validating, interpreting and appraising clinical prediction models and machine learning — with live labs and a model sandbox." />
+    <meta name="theme-color" content="#f8fafc" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>ModelMed - Predictive Modeling for Clinicians</title>
+    <meta property="og:title" content="ModelMed — Clinical Prediction Models for Clinicians" />
+    <meta property="og:description" content="14 evidence-based modules, 14 live labs and a full model-development sandbox." />
+    <script>
+      // apply the stored theme before first paint to avoid a flash
+      try {
+        var s = JSON.parse(localStorage.getItem('modelmed-progress-v2') || '{}');
+        var m = (s.state && s.state.theme) || 'system';
+        if (m === 'dark' || (m === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>ModelMed needs JavaScript to run its interactive labs.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
