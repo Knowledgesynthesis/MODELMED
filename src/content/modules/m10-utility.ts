@@ -75,6 +75,7 @@ When capacity is fixed, evaluate the model as a ranking: sensitivity and PPV amo
 
 - **Cluster-randomised or stepped-wedge trials** are the strongest designs. An AI-ECG tool for low ejection fraction, tested in a pragmatic cluster RCT across primary care teams, increased new diagnoses [@yao2021eagle].
 - **Observational before–after or adoption studies** are vulnerable to secular trends and confounding by who responds to alerts. In a prospective multisite study of a sepsis early-warning system, patients whose alerts were confirmed within 3 hours had lower mortality, an observational comparison that cannot fully separate the tool's effect from the clinicians' [@adams2022trews].
+- Impact is a causal question. When randomisation is impossible, design the comparison as an emulated target trial ([Module 15](/module/causal)).
 - RCTs of ML interventions remain few, often single-centre, and inconsistently reported [@plana2022rct]. Use **DECIDE-AI** for early live evaluation and **CONSORT-AI** for trials [@vasey2022decideai; @liu2020consortai].`,
         },
       ],

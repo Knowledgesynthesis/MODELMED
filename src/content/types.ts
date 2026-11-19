@@ -12,7 +12,9 @@ export type LabId =
   | 'dca'
   | 'shap'
   | 'fairness'
-  | 'drift';
+  | 'drift'
+  | 'confounding'
+  | 'immortal-time';
 
 export type CalloutTone = 'key' | 'pitfall' | 'clinical' | 'evidence' | 'example' | 'formula';
 
@@ -28,7 +30,7 @@ export interface Section {
   blocks: Block[];
 }
 
-export type Track = 'frame' | 'build' | 'evaluate' | 'trust';
+export type Track = 'frame' | 'build' | 'evaluate' | 'trust' | 'causal';
 
 export interface Module {
   id: string;
@@ -67,4 +69,5 @@ export const TRACKS: Record<Track, { title: string; blurb: string }> = {
   build: { title: 'Build models', blurb: 'How each model family works, and when it earns its complexity.' },
   evaluate: { title: 'Evaluate', blurb: 'Discrimination, calibration, clinical utility — and honest validation.' },
   trust: { title: 'Trust & deploy', blurb: 'Explanations, fairness, monitoring, regulation, and LLMs.' },
+  causal: { title: 'Causal questions', blurb: 'When the question is "what if we treat?": causal inference and target trial emulation.' },
 };

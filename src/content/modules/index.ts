@@ -13,8 +13,9 @@ import { interpretability } from './m11-interpretability';
 import { fairness } from './m12-fairness';
 import { deployment } from './m13-deployment';
 import { llm } from './m14-llm';
+import { causal } from './m15-causal';
 
-export const modules: Module[] = [foundations, dataDesign, logistic, survival, trees, neural, validation, discrimination, calibration, utility, interpretability, fairness, deployment, llm];
+export const modules: Module[] = [foundations, dataDesign, logistic, survival, trees, neural, validation, discrimination, calibration, utility, interpretability, fairness, deployment, llm, causal];
 
 export const moduleById = (id: string) => modules.find((m) => m.id === id);
 export const nextModule = (id: string) => modules[modules.findIndex((m) => m.id === id) + 1];
