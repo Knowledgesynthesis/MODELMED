@@ -1,90 +1,38 @@
-# ModelMed - Predictive Modeling for Clinicians
+# ModelMed
 
-An interactive educational web application that teaches clinicians how to build, validate, and interpret predictive models and machine learning pipelines in healthcare.
+**An evidence-based, interactive course for clinicians on building, validating, interpreting and appraising clinical prediction models and machine learning.**
 
-## Features
+ModelMed teaches the full lifecycle of a clinical prediction model — from framing the question to monitoring after go-live — through 14 modules, 14 live labs and an end-to-end model sandbox. Every chart is computed in the browser from data or exact formulas; nothing is pre-drawn or faked.
 
-- 🎓 **Comprehensive Curriculum**: 11 modules covering foundations to advanced topics
-- 📱 **Mobile-First Design**: Optimized for learning on any device
-- 🌙 **Dark Mode**: Easy on the eyes with full dark mode support
-- 📴 **Offline Ready**: Progressive Web App with offline capabilities
-- 🧪 **Interactive Sandbox**: Build and evaluate models with synthetic datasets
-- 📊 **Rich Visualizations**: ROC curves, calibration plots, confusion matrices
-- 🎯 **Assessments**: Test your knowledge with interactive quizzes
-- 📚 **Glossary**: Comprehensive ML and statistics terminology
+## What's inside
 
-## Modules
+| | |
+|---|---|
+| **14 modules** in four tracks | *Frame* (foundations; data, outcomes, sample size) · *Build* (logistic regression, survival, trees & boosting, neural networks) · *Evaluate* (validation & leakage, discrimination, calibration, clinical utility) · *Trust & deploy* (interpretability, fairness, deployment & 2026 regulation, LLMs) |
+| **14 interactive labs** | Prevalence & PPV · Riley sample size · odds ratios vs absolute risk · Kaplan–Meier & censoring · decision trees · neural-network playground · overfitting · leakage in cross-validation · ROC/PR & thresholds · calibration & recalibration · decision curves · exact SHAP · label bias & fairness trade-offs · drift monitoring |
+| **Model sandbox** | Five model families (logistic, logistic + splines, CART, random forest, gradient boosting) on synthetic cohorts with *known true risk*; AUC with DeLong CI, calibration intercept/slope/ICI, decision curves, permutation importance, subgroup audit, exact per-patient SHAP, leakage detection, auto-generated TRIPOD+AI-style summary |
+| **Assessment** | 87 case-based items with rationales and citations; 80% mastery check per module; mixed exams and missed-question review |
+| **Appraisal checklist** | Structured appraisal condensed from PROBAST+AI / TRIPOD+AI domains, with a copyable concern summary |
+| **Evidence base** | 141 sources (DOIs verified against Crossref), including TRIPOD+AI (2024), PROBAST+AI (2025), TRIPOD-LLM (2025), STARD-AI (2025), FDA CDS guidance (Jan 2026), ONC HTI-5 (Oct 2026) and the EU AI Act Digital Omnibus (2026) |
 
-1. **Foundations of Predictive Modeling** - Core concepts and terminology
-2. **Logistic Regression & Linear Models** - Interpretable statistical models
-3. **Survival Models** - Time-to-event analysis with Kaplan-Meier and Cox models
-4. **Tree-Based Models** - Decision trees, random forests, gradient boosting
-5. **Neural Networks** - Deep learning in clinical context
-6. **Training & Validation** - Cross-validation, overfitting, underfitting
-7. **Performance Metrics** - ROC, AUC, calibration, confusion matrices
-8. **Interpretability** - SHAP, LIME, feature importance
-9. **Bias & Fairness** - Identifying and mitigating algorithmic bias
-10. **Calibration & Thresholding** - Clinical decision-making with ML
-11. **Model Sandbox** - Hands-on model building and evaluation
+## Scientific integrity
 
-## Getting Started
+- **Verified numerics.** `src/lib` contains the statistics and ML engine (IRLS logistic regression, restricted cubic splines, CART, random forests, gradient boosting, exact Shapley values, Kaplan–Meier/log-rank/C-index, DeLong AUC CIs, flexible calibration curves, net benefit, Riley sample size). Unit tests check them against known results — e.g. the Riley calculator reproduces the published pmsampsize example (n = 662) and its C-statistic → R² conversion (0.288).
+- **Honest synthetic data.** Cohorts are generated from explicit, documented data-generating models with seeded randomness. The sepsis cohort has U-shaped (SIRS-like) effects where splines and ensembles beat linear terms; the readmission cohort is linear and weak, where logistic regression matches flexible ML — mirroring the published evidence. Tests assert both lessons.
 
-### Prerequisites
-
-- Node.js 18+ and npm
-
-### Installation
+## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+npm run dev       # local dev server
+npm test          # unit tests (vitest)
+npm run lint      # eslint, zero warnings
+npm run build     # type-check + production build (PWA, offline-capable)
+npm run check     # all of the above
 ```
 
-## Technology Stack
+Stack: React 18, TypeScript, Vite, Tailwind CSS, Zustand, react-markdown + KaTeX, custom SVG charts, vite-plugin-pwa. Deployed on Vercel (`vercel.json` provides SPA rewrites).
 
-- **Frontend**: React 18 + TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Custom components following shadcn/ui patterns
-- **State Management**: Zustand
-- **Routing**: React Router v6
-- **Visualizations**: Recharts + D3
-- **Offline Support**: Vite PWA Plugin + IndexedDB
-- **Build Tool**: Vite
+## Privacy
 
-## Educational Philosophy
-
-ModelMed emphasizes:
-
-- **Clinically Relevant**: All examples use healthcare scenarios
-- **Scientifically Rigorous**: No algorithmic hallucinations or oversimplifications
-- **Safe Learning**: Synthetic datasets only, no real patient data
-- **Practical Focus**: From theory to clinical interpretation
-- **Ethical Awareness**: Bias, fairness, and responsible AI use
-
-## Data Privacy
-
-- All datasets are **synthetic** - no real patient data
-- All processing happens **client-side** - no data sent to servers
-- Progress stored **locally** in browser storage
-- Fully functional **offline** after initial load
-
-## License
-
-Educational use only. All rights reserved.
-
-## Contributing
-
-This is an educational application. For issues or suggestions, please contact the development team.
-
-## Acknowledgments
-
-Built following evidence-based machine learning education principles and clinical informatics best practices.
+All data are synthetic. Everything runs client-side; progress is stored only in the browser (exportable from Settings).
