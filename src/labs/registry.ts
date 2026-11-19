@@ -24,6 +24,8 @@ export const LABS: LabMeta[] = [
   { id: 'shap', title: 'SHAP explainer', summary: 'Exact Shapley values for logistic vs boosted-tree sepsis models.', module: 'interpretability', component: lazy(() => import('./ShapLab')) },
   { id: 'fairness', title: 'Bias & fairness trade-offs', summary: 'Label-choice bias (cost vs need) and the base-rate impossibility result.', module: 'fairness', component: lazy(() => import('./FairnessLab')) },
   { id: 'drift', title: 'Monitoring after go-live', summary: 'Prior shift, case-mix shift, assay change, concept drift and feedback loops.', module: 'deployment', component: lazy(() => import('./DriftLab')) },
+  { id: 'confounding', title: 'Confounding, colliders & adjustment', summary: 'What to adjust for, g-formula vs IPTW, overlap, unmeasured confounding and E-values.', module: 'causal', component: lazy(() => import('./ConfoundingLab')) },
+  { id: 'immortal-time', title: 'Immortal time bias', summary: 'Why "ever vs never treated" makes a useless drug look life-saving, and how aligning time zero fixes it.', module: 'causal', component: lazy(() => import('./ImmortalTimeLab')) },
 ];
 
 export const labById = (id: string) => LABS.find((l) => l.id === id);

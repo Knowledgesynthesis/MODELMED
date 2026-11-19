@@ -36,7 +36,7 @@ export function HomePage() {
           <p className="text-sm font-semibold text-primary">Clinical prediction models & machine learning, for clinicians</p>
           <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-5xl">Understand, build and critically appraise the models that are reshaping clinical decisions.</h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            Fourteen evidence-based modules, fourteen live labs that compute everything from real data, and a full development-to-validation sandbox. Built on TRIPOD+AI, PROBAST+AI and the methods literature — current to 2026.
+            {modules.length} evidence-based modules — from prediction to causal inference — {LABS.length} live labs that compute everything from real data, and a full development-to-validation sandbox. Built on TRIPOD+AI, PROBAST+AI, TARGET and the methods literature — current to 2026.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <LinkButton to={`/module/${next.id}`} size="lg">

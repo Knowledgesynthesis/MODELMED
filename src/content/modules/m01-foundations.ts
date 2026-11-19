@@ -37,7 +37,7 @@ A **clinical prediction model** estimates the probability that an outcome is pre
           title: 'A predictor is not a lever',
           md: md`A model trained on routine data found that patients with asthma had a *lower* risk of dying from pneumonia [@caruana2015]. Asthma is not protective. Asthmatic patients were admitted to intensive care faster, and that treatment lowered their risk. The model learned the care pathway, not the biology. Deploying it to triage would have sent the highest-risk patients home.
 
-Prediction models estimate risk *under current care*, including whatever clinicians currently do for high-risk patients ("treatment-naive" risk is a different, causal quantity) [@vangeloven2020]. Do not read coefficients, feature importance or SHAP values as effects of intervening.`,
+Prediction models estimate risk *under current care*, including whatever clinicians currently do for high-risk patients ("treatment-naive" risk is a different, causal quantity) [@vangeloven2020]. Do not read coefficients, feature importance or SHAP values as effects of intervening. Causal questions need causal methods: see [Module 15](/module/causal).`,
         },
         { type: 'check', id: 'f-causal' },
       ],
